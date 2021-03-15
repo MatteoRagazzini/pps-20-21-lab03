@@ -12,6 +12,10 @@ object ListSolution {
     case Nil() => Nil()
   }
 
+  def flatMap[A,B](l: List[A])(mapper: A => List[B]): List[B] = l match{
+    case Cons(h,t) => append(mapper(h), flatMap(t)(mapper))
+    case _ => Nil()
+  }
 
 }
 

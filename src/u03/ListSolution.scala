@@ -17,5 +17,10 @@ object ListSolution {
     case _ => Nil()
   }
 
+  @Override
+  def map[A,B](l: List[A])(mapper: A=>B): List[B] = flatMap(l)(v=>Cons(mapper(v), Nil()))
+
+
+
 }
 

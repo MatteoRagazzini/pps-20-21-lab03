@@ -3,7 +3,7 @@ package u02
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import u03.ListSolution._
-import u03.Lists.List._
+import u03.Lists.List.{Cons,Nil}
 
 class ListTest {
 
@@ -21,4 +21,9 @@ class ListTest {
     assertEquals(Nil(), drop(lst, 5))
   }
 
+
+
+  @Test def mapTest(): Unit ={
+    assertEquals(Cons(11, Cons(21, Cons(31, Nil()))), map(lst)(_+1))
+  }
 }

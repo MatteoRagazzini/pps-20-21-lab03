@@ -3,7 +3,10 @@ package u02
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import u03.ListSolution._
-import u03.Lists.List.{Cons,Nil}
+import u03.Lists.List.{Cons, Nil}
+import u02.Optionals.Option.Some
+import u02.Optionals.Option.None
+
 
 class ListTest {
 
@@ -27,5 +30,10 @@ class ListTest {
 
   @Test def filterTest(): Unit ={
     assertEquals(Cons(10, Nil()), filter(lst)(_<15))
+  }
+
+  @Test def mexTest(): Unit ={
+    assertEquals(Some(30), max(lst))
+    assertEquals(None(), max(Nil()))
   }
 }

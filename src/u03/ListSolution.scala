@@ -1,6 +1,9 @@
 package u03
 
 import u03.Lists.List._
+import u02.Optionals.Option.Some
+import u02.Optionals.Option.None
+import u02.Optionals.Option
 
 
 object ListSolution {
@@ -24,6 +27,14 @@ object ListSolution {
   def filter[A](l: List[A])(pred: A=>Boolean): List[A] = flatMap(l) {
     case a if pred(a) => Cons(a, Nil())
     case _ => Nil()
+  }
+
+  def max(l: List[Int]): Option[Int] =  l match {
+    case Cons(h,t) => t match {
+      case Cons(_,_) => max(filter(t)(_>h))
+      case Nil() => Some(h)
+    }
+    case _ => None()
   }
 
 

@@ -21,9 +21,11 @@ class ListTest {
     assertEquals(Nil(), drop(lst, 5))
   }
 
-
-
   @Test def mapTest(): Unit ={
     assertEquals(Cons(11, Cons(21, Cons(31, Nil()))), map(lst)(_+1))
+  }
+
+  @Test def filterTest(): Unit ={
+    assertEquals(Cons(10, Nil()), filter(lst)(_<15))
   }
 }

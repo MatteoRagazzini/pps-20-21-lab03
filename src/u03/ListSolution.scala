@@ -20,6 +20,12 @@ object ListSolution {
   @Override
   def map[A,B](l: List[A])(mapper: A=>B): List[B] = flatMap(l)(v=>Cons(mapper(v), Nil()))
 
+  @Override
+  def filter[A](l: List[A])(pred: A=>Boolean): List[A] = flatMap(l) {
+    case a if pred(a) => Cons(a, Nil())
+    case _ => Nil()
+  }
+
 
 
 }

@@ -1,7 +1,7 @@
 package u03
 
 import u02.Optionals.Option
-import u02.Optionals.Option.{None, Some}
+import u02.Optionals.Option.{None, Some, getOrElse}
 import u03.Lists.List._
 import u02.SumTypes._
 
@@ -33,12 +33,18 @@ object ListSolution {
     case _ => Nil()
   }
 
-  @tailrec
-  def max(l: List[Int]): Option[Int] =  l match {
-    case Cons(h,t) => t match {
-      case Cons(_,_) => max(filter(t)(_>h))
-      case Nil() => Some(h)
-    }
+//  @tailrec
+//  def max(l: List[Int]): Option[Int] =  l match {
+//    case Cons(h,t) => t match {
+//      case Cons(_,_) => max(filter(t)(_>h))
+//      case Nil() => Some(h)
+//    }
+//    case _ => None()
+//  }
+
+  def max(list: List[Int]): Option[Int] = list match{
+    //in case the optional is None() returns MinValue
+    case Cons(h, t) => Some(Math.max(h, getOrElse(max(t), Int.MinValue)))
     case _ => None()
   }
 

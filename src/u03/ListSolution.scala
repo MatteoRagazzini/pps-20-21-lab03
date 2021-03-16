@@ -65,7 +65,7 @@ object ListSolution {
   @tailrec
   def foldLeft[A,B](list: List[A])(accumulator: B)(binOp :(B, A) => B ): B = list match {
     case Cons(h,t) => foldLeft(t)(binOp(accumulator, h))(binOp)
-    case Nil() => accumulator
+    case _ => accumulator
   }
 
 }

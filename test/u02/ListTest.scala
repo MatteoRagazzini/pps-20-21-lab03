@@ -3,15 +3,17 @@ package u02
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import u02.Optionals.Option.{None, Some}
-import u02.SumTypes.{Student, Teacher}
+import u02.SumTypes._
 import u03.ListSolution._
 import u03.Lists.List.{Cons, Nil}
+import u03.Lists.List
 
 
 class ListTest {
 
   val lst = Cons(10, Cons(20, Cons(30, Nil())))
-  val personsList = Cons(Student("Matteo", 5), Cons(Teacher("Bravetti", "LCMC"), Cons(Teacher("Ghini", "SO"), Nil())))
+  val courses:List[String] = Cons("LCMC", Cons("SO" , Nil()))
+  val personsList: List[Person] = Cons(Student("Matteo", 5), Cons(Teacher("Bravetti", "LCMC"), Cons(Teacher("Ghini", "SO"), Nil())))
 
   @Test def dropTest(): Unit ={
      assertEquals(Cons(20, Cons(30, Nil())), drop(lst, 1))
@@ -38,7 +40,7 @@ class ListTest {
   }
 
   @Test def getCoursesTest(): Unit ={
-    assertEquals(Cons("LCMC",Cons("SO", Nil())), getCourses(personsList) )
+    assertEquals(courses, getCourses(personsList) )
   }
 
 }

@@ -38,12 +38,18 @@ object ListSolution {
     case _ => None()
   }
 
+  // utility function to get the course taken by a specific teacher
   def course(p: Person): String = p match {
     case Teacher(_,c) => c
   }
 
+  // Firstly filter the list taking only the Teachers and then map each teacher with the corresponding course
   def getCourses(l: List[Person]): List[String] = map(filter(l)(a => a.isInstanceOf[Teacher]))( p => course(p))
 
 
+  def foldRight[A,B](list: List[A])(accumulator: B)(binOp :(A, B) => B ): B = list match {
+    case Cons(h,t) => binOp(h, foldRight(t)(accumulator)(binOp))
+    case _ => accumulator
+  }
 }
 

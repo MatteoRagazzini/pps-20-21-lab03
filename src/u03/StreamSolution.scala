@@ -17,4 +17,9 @@ object StreamSolution {
 
   def constant[A] (elem: A): Stream[A] = cons(elem, constant(elem))
 
+  def fibonacci(): Stream[Int] = {
+    def _fib(prev:Int, curr: Int): Stream[Int] = cons(prev, _fib(curr, prev+curr))
+    _fib(0, 1)
+  }
+
 }

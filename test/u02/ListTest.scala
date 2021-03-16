@@ -11,8 +11,8 @@ import u03.Lists.List
 
 class ListTest {
 
-  val lst = Cons(10, Cons(20, Cons(30, Nil())))
-  val list = Cons(3, Cons(7, Cons(1, Cons(5, Nil()))))
+  val lst: List[Int] = Cons(10, Cons(20, Cons(30, Nil())))
+  val list: List[Int] = Cons(3, Cons(7, Cons(1, Cons(5, Nil()))))
   val courses:List[String] = Cons("LCMC", Cons("SO" , Nil()))
   val personsList: List[Person] = Cons(Student("Matteo", 5), Cons(Teacher("Bravetti", "LCMC"), Cons(Teacher("Ghini", "SO"), Nil())))
 
@@ -41,12 +41,13 @@ class ListTest {
   }
 
   @Test def getCoursesTest(): Unit ={
-    assertEquals(courses, getCourses(personsList) )
+    assertEquals(courses, getCourses(personsList))
   }
 
 
   @Test def foldTest(): Unit ={
     assertEquals(-8, foldRight(list)(0)(_-_))
+    assertEquals(-16, foldLeft(list)(0)(_-_))
   }
 
 }

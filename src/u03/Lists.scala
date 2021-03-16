@@ -26,7 +26,7 @@ object Lists {
     }
 
     def filter[A](l1: List[A])(pred: A=>Boolean): List[A] = l1 match {
-      case Cons(h,t) if (pred(h)) => Cons(h, filter(t)(pred))
+      case Cons(h,t) if pred(h) => Cons(h, filter(t)(pred))
       case Cons(_,t) => filter(t)(pred)
       case Nil() => Nil()
     }
@@ -38,7 +38,6 @@ object ListsMain extends App {
   val l = List.Cons(10, List.Cons(20, List.Cons(30, List.Nil())))
   println(List.sum(l)) // 60
   import List._
-  import u03.Lists.List
   println(append(Cons(5, Nil()), l)) // 5,10,20,30
   println(filter[Int](l)(_ >=20)) // 20,30
 }

@@ -5,11 +5,14 @@ import u02.Optionals.Option.{None, Some}
 import u03.Lists.List._
 import u02.SumTypes._
 
+import scala.annotation.tailrec
+
 
 object ListSolution {
   import Lists._
 
 
+  @tailrec
   def drop[A](l:List[A], n:Int):List[A] = l match{
     case Cons(_,t)  if n>0 => drop(t, n-1)
     case Cons(h,t) if n<=0 => Cons(h,t)
@@ -30,6 +33,7 @@ object ListSolution {
     case _ => Nil()
   }
 
+  @tailrec
   def max(l: List[Int]): Option[Int] =  l match {
     case Cons(h,t) => t match {
       case Cons(_,_) => max(filter(t)(_>h))
@@ -51,5 +55,12 @@ object ListSolution {
     case Cons(h,t) => binOp(h, foldRight(t)(accumulator)(binOp))
     case _ => accumulator
   }
+
+  @tailrec
+  def foldLeft[A,B](list: List[A])(accumulator: B)(binOp :(B, A) => B ): B = list match {
+    case Cons(h,t) => foldLeft(t)(binOp(accumulator, h))(binOp)
+    case Nil() => accumulator
+  }
+
 }
 

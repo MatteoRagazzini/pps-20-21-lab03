@@ -12,6 +12,10 @@ object SumTypes extends App {
     case Teacher(n,_) => n
   }
 
+  def course(p: Person): String = p match {
+    case Teacher(_,c) => c
+  }
+
   println(name(Student("mario",2015)))
 
   // A LinkedList of Int

@@ -1,13 +1,19 @@
 package u03
 
+import u02.Modules.Person
 import u03.Lists.List._
 import u02.Optionals.Option.Some
 import u02.Optionals.Option.None
 import u02.Optionals.Option
+import u02.SumTypes
+import u02.SumTypes.{Person, Teacher, course}
 
 
 object ListSolution {
   import Lists._
+  import u02.SumTypes.course
+  import u02.SumTypes.Teacher
+
 
   def drop[A](l:List[A], n:Int):List[A] = l match{
     case Cons(_,t)  if n>0 => drop(t, n-1)
@@ -37,6 +43,7 @@ object ListSolution {
     case _ => None()
   }
 
+  def getCourses(l: List[Person]): List[String] = map((filter(l)(a => a.isInstanceOf[Teacher]))(p => course(p)))
 
 
 }
